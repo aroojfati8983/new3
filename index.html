@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculate</title>
+</head>
+<body>
+    <h1>Age Calculator </h1>
+    <form onsubmit="AgeCalculate(); return false;">
+        <input type="date" name="birthdate" id="birthdate" placeholder="Enter your birthdate"/><br><br>
+        <button type="submit">AgeCalculate</button>
+        <p id="AgeResult"></p>
+    </form>
+    <script>
+        function AgeCalculate(){
+         //DOM Reference
+            const birthdateRef=document.querySelector("#birthdate");
+            const AgeResultRef=document.querySelector("#AgeResult");
+            //input value
+            let birthdate=birthdateRef.value;
+            
+            if(!birthdate){
+                AgeResultRef.innerText   ="Enter your birthdate";return;
+            }
+
+          //
+
+            const birthDate=new Date(birthdate)
+            const today=new Date();
+           //calculate Age
+            let Age=today.getFullYear()-birthDate.getFullYear();
+            const monthdiff=today.getMonth()-birthDate.getMonth();
+            const daydiff=today.getDate()-birthDate.getDate();
+
+            if(monthdiff <0||(monthdiff===0&&today.getDate()<birthDate.getDate()))
+            Age--;
+        console.log(Age);
+        console.log(monthdiff)
+        console.log(daydiff);
+
+        
+        //Age result
+        AgeResultRef.innerText="Age:" +Age +"year";
+
+
+        }
+    </script>
+</body>
+</html>
